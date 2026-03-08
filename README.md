@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+//routing
 
-## Getting Started
+special files
+page.js
+layout.js
+templates.js
+not-found.js
+loading.js
+error.js
+global-error.js
 
-First, run the development server:
+file based routing
+app
+-about->page.js
+-profile->page.js
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+nested routes
+app
+-product->page.js
+-firstproduct->page.js
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+dynamic route
+app
+-product->page.js -[productId]->page.js
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+[...slug] catch all segment
+app
+- docs -[...slug]->page.js
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+(slug) routing groups
+app
+-(auth)
+-login->page.js
+-register->page.js
 
-## Learn More
+if any folder in app.js not have page.js or in page.js not have a default export component until that that route will not work
 
-To learn more about Next.js, take a look at the following resources:
+Private folder (do not serve in route)
+_ add _ defore the folder name
+app -[_lib]
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+use %5F if you want \_ in your route
+app -[%5Flib]->page.js
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Layout
+layout is the ui that is shared with the multipe pages in the app
 
-## Deploy on Vercel
+if we want diff layout for diff layout we can implement using routing group
+ensure you sholud remove the layout.js and page.js from app folder (root files) and move
+them into any one route group that you want
+(auth)
+-login->page.js
+-register->page.js
+-layout.js->authlayout
+(marketing)
+-revenue->page.js
+-customer->page.js
+-layout.js->marketinglayout
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+templates in nextjs
+Templates in Next.js are similar to layouts, but unlike layouts they re-render when their children change.
+Layouts are persistent and do not re-render during navigation between pages inside the same layout.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Templates are useful when you want shared UI (like a header or wrapper) but need it to reset or re-render on each navigation.
+
+For example, if you want to show a user profile in the header on the homepage, but not on the login or register pages, you can use templates to control this behavior.
+
+
+
