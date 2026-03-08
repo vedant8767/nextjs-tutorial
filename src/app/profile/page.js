@@ -4,12 +4,12 @@
 //   title: "Profile",
 // };
 
-function generateRandomNumber(count) {
-  return Math.floor(Math.random() * count);
-}
+// function generateRandomNumber(count) {
+//   return Math.floor(Math.random() * count);
+// }
 
 function page() {
-  const random = generateRandomNumber(2);
+  // const random = generateRandomNumber(2);
   if (random === 1) {
     throw new Error("Something went wrong");
   }
