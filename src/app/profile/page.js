@@ -1,8 +1,8 @@
 "use client"
 
-export const metadata = {
-  title: "Profile",
-};
+// export const metadata = {
+//   title: "Profile",
+// };
 
 function generateRandomNumber(count) {
   return Math.floor(Math.random() * count);
